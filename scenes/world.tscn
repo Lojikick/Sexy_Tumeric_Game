@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cpo5ybmirjamn"]
+[gd_scene load_steps=5 format=3 uid="uid://cpo5ybmirjamn"]
 
 [ext_resource type="PackedScene" uid="uid://cwl1myn0sim68" path="res://scenes/player.tscn" id="1_rfbke"]
+[ext_resource type="PackedScene" uid="uid://bxlxtdw5xtnku" path="res://scenes/falling_platform.tscn" id="2_0p1x0"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_1taul"]
 
@@ -31,3 +32,7 @@ mesh = SubResource("QuadMesh_1taul")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2"]
 shape = SubResource("RectangleShape2D_2p8eb")
+
+[node name="FallingPlatform" parent="." instance=ExtResource("2_0p1x0")]
+position = Vector2(187, 477)
+scale = Vector2(8.70179, 1.31365)
