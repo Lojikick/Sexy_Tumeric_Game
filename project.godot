@@ -11,9 +11,14 @@ config_version=5
 [application]
 
 config/name="Sexy_Tumeric_Game"
+run/main_scene="res://scenes/world.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
 [dotnet]
 
 project/assembly_name="Sexy_Tumeric"
+
+[global_group]
+
+Player=""
