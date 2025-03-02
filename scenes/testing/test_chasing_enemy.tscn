@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://8rc1aaiay2hx"]
+
+[ext_resource type="PackedScene" uid="uid://cycl8b81nv00w" path="res://scenes/platform.tscn" id="1_qpj1b"]
+[ext_resource type="PackedScene" uid="uid://cwl1myn0sim68" path="res://scenes/player.tscn" id="2_abtoa"]
+
+[node name="TestChasingEnemy" type="Node2D"]
+
+[node name="Platform" parent="." instance=ExtResource("1_qpj1b")]
+position = Vector2(433, 204)
+
+[node name="Player" parent="." instance=ExtResource("2_abtoa")]
+position = Vector2(447, 248)

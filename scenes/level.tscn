@@ -1,0 +1,101 @@
+[gd_scene load_steps=7 format=3 uid="uid://b04s0whyoe3d"]
+
+[ext_resource type="PackedScene" uid="uid://dntypgup5qjh5" path="res://scenes/little_guy_test.tscn" id="1_q5yuy"]
+[ext_resource type="Texture2D" uid="uid://ciktdt7qmp4tn" path="res://temp art/tumericimage.jpg" id="2_ptey2"]
+[ext_resource type="Texture2D" uid="uid://bbmt48w7133ky" path="res://temp art/dirt.jpg" id="3_a3jgj"]
+[ext_resource type="Texture2D" uid="uid://dkwcooyohxjnu" path="res://temp art/black_rectangle_u25AC_icon_256x256.png" id="4_8xmiq"]
+[ext_resource type="PackedScene" uid="uid://bxlxtdw5xtnku" path="res://scenes/falling_platform.tscn" id="5_8jei7"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qb7fr"]
+
+[node name="Level" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+z_index = 2
+position = Vector2(5, 34)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_qb7fr")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_q5yuy")]
+z_index = 5
+position = Vector2(0, -17)
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+position = Vector2(0, 17)
+process_callback = 0
+position_smoothing_enabled = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(-400, 725)
+scale = Vector2(43.4992, 4.07353)
+texture = ExtResource("3_a3jgj")
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Node"]
+position = Vector2(361.25, -290.875)
+scale = Vector2(2.27182, 3.56899)
+texture = ExtResource("2_ptey2")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Node"]
+z_as_relative = false
+position = Vector2(-709.125, -440.188)
+scale = Vector2(2.21864, 2.80772)
+texture = ExtResource("2_ptey2")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Node"]
+position = Vector2(-2549, -381)
+scale = Vector2(4.51182, 3.56899)
+texture = ExtResource("2_ptey2")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Node"]
+position = Vector2(1645, -346)
+scale = Vector2(2.46273, 3.32309)
+texture = ExtResource("2_ptey2")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Node"]
+position = Vector2(-9672.75, -387.875)
+scale = Vector2(22.0918, 4.86954)
+texture = ExtResource("2_ptey2")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Node"]
+position = Vector2(3150, -387)
+scale = Vector2(3.01136, 3.82958)
+texture = ExtResource("2_ptey2")
+
+[node name="Sprite2D7" type="Sprite2D" parent="Node"]
+position = Vector2(8654.81, -557.219)
+scale = Vector2(17.9934, 4.89498)
+texture = ExtResource("2_ptey2")
+
+[node name="Sprite2D8" type="Sprite2D" parent="Node"]
+z_index = -1
+position = Vector2(-1104, -2040)
+scale = Vector2(56.5091, 13.5143)
+texture = ExtResource("2_ptey2")
+
+[node name="Label" type="Label" parent="."]
+z_index = 4
+offset_left = -145.0
+offset_top = -189.0
+offset_right = 459.0
+offset_bottom = 23.0
+text = "A and D to move
+Space to jump
+Shift to Dash in direction held
+Right click in air to Wall Cling
+Jump during Wall Cling to Wall Jump"
+horizontal_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(156.5, -113)
+scale = Vector2(2.30078, 3.0625)
+texture = ExtResource("4_8xmiq")
+
+[node name="FallingPlatform" parent="." instance=ExtResource("5_8jei7")]
+z_index = 250
+position = Vector2(-106, -104)
+scale = Vector2(23.745, 1)

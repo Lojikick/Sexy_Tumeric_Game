@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnncd4ah5kmgh"]
+
+[ext_resource type="AudioStream" uid="uid://b71w41pa5yv30" path="res://temp art/cool song.mp3" id="1_vbqss"]
+
+[node name="numb" type="AudioStreamPlayer"]
+stream = ExtResource("1_vbqss")
+volume_db = -18.176
+autoplay = true
