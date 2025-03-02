@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://fapbhm2k2d6r"]
+
+[ext_resource type="AudioStream" uid="uid://b71w41pa5yv30" path="res://temp art/cool song.mp3" id="1_t02jj"]
+
+[node name="Linkin Park" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_t02jj")
+volume_db = -47.033
+autoplay = true
+panning_strength = 0.0
+bus = &"New Bus"

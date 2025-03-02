@@ -1,0 +1,97 @@
+[gd_scene load_steps=9 format=3 uid="uid://dntypgup5qjh5"]
+
+[ext_resource type="Script" path="res://character_body_2d.gd" id="1_gv26t"]
+[ext_resource type="Texture2D" uid="uid://dvqefymv6vffh" path="res://temp art/Big_ol_eyes.png" id="2_b34sk"]
+[ext_resource type="Texture2D" uid="uid://buueina0ecp7f" path="res://temp art/dasherr.png" id="2_l6sko"]
+[ext_resource type="Texture2D" uid="uid://cgtkn6ndooxk0" path="res://temp art/wall_cling.png" id="4_dssa6"]
+[ext_resource type="Texture2D" uid="uid://ck8vvjrpo3nwq" path="res://temp art/wallcling2.png" id="5_1j7sj"]
+[ext_resource type="Texture2D" uid="uid://b05dysljhnjc6" path="res://temp art/joump.png" id="5_dqlcs"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qgaua"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_l6sko")
+}],
+"loop": true,
+"name": &"dash",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_b34sk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_dssa6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1j7sj")
+}],
+"loop": true,
+"name": &"wallcling",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_dqlcs")
+}],
+"loop": true,
+"name": &"walljump",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r4pe6"]
+size = Vector2(12.9278, 27.4335)
+
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["Player"]]
+script = ExtResource("1_gv26t")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qgaua")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_b34sk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, 12)
+scale = Vector2(1.315, 1.315)
+shape = SubResource("RectangleShape2D_r4pe6")
+
+[node name="AirDashTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="FloorDashTimer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
+[node name="AirDashCooldown" type="Timer" parent="."]
+wait_time = 0.425
+one_shot = true
+
+[node name="FloorDashCooldown" type="Timer" parent="."]
+wait_time = 0.462
+one_shot = true
+
+[node name="GravityPause" type="Timer" parent="."]
+wait_time = 0.078
+
+[node name="MotionPause" type="Timer" parent="."]
+wait_time = 0.021
+
+[node name="AirJumpTimer" type="Timer" parent="."]
+wait_time = 0.232
+
+[connection signal="timeout" from="AirDashTimer" to="." method="_on_air_dash_timer_timeout"]
+[connection signal="timeout" from="FloorDashTimer" to="." method="_on_floor_dash_timer_timeout"]
+[connection signal="timeout" from="AirDashCooldown" to="." method="_on_air_dash_cooldown_timeout"]
+[connection signal="timeout" from="FloorDashCooldown" to="." method="_on_floor_dash_cooldown_timeout"]
+[connection signal="timeout" from="GravityPause" to="." method="_on_gravity_pause_timeout"]
+[connection signal="timeout" from="MotionPause" to="." method="_on_motion_pause_timeout"]
+[connection signal="timeout" from="AirJumpTimer" to="." method="_on_air_jump_timer_timeout"]
