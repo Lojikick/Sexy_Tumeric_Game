@@ -35,6 +35,7 @@ var is_facing_right = true
 
 
 
+
 func _physics_process(delta: float) -> void:
 	
 	
@@ -191,6 +192,8 @@ func _physics_process(delta: float) -> void:
 	elif is_wall_jumping:
 		animated_sprite_2d.play("walljump")
 		
+	elif direction != 0:
+		animated_sprite_2d.play("walking")
 		
 	else:
 		animated_sprite_2d.play("default")

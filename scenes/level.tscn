@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://b04s0whyoe3d"]
+[gd_scene load_steps=6 format=3 uid="uid://b04s0whyoe3d"]
 
 [ext_resource type="PackedScene" uid="uid://dntypgup5qjh5" path="res://scenes/little_guy_test.tscn" id="1_q5yuy"]
 [ext_resource type="Texture2D" uid="uid://ciktdt7qmp4tn" path="res://temp art/tumericimage.jpg" id="2_ptey2"]
 [ext_resource type="Texture2D" uid="uid://bbmt48w7133ky" path="res://temp art/dirt.jpg" id="3_a3jgj"]
 [ext_resource type="Texture2D" uid="uid://dkwcooyohxjnu" path="res://temp art/black_rectangle_u25AC_icon_256x256.png" id="4_8xmiq"]
-[ext_resource type="PackedScene" uid="uid://bxlxtdw5xtnku" path="res://scenes/falling_platform.tscn" id="5_8jei7"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qb7fr"]
 
@@ -94,8 +93,3 @@ z_index = 2
 position = Vector2(156.5, -113)
 scale = Vector2(2.30078, 3.0625)
 texture = ExtResource("4_8xmiq")
-
-[node name="FallingPlatform" parent="." instance=ExtResource("5_8jei7")]
-z_index = 250
-position = Vector2(-106, -104)
-scale = Vector2(23.745, 1)
