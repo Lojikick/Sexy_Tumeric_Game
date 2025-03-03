@@ -1,12 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://8rc1aaiay2hx"]
+[gd_scene load_steps=5 format=3 uid="uid://8rc1aaiay2hx"]
 
 [ext_resource type="PackedScene" uid="uid://cycl8b81nv00w" path="res://scenes/platform.tscn" id="1_qpj1b"]
 [ext_resource type="PackedScene" uid="uid://cwl1myn0sim68" path="res://scenes/player.tscn" id="2_abtoa"]
+[ext_resource type="PackedScene" uid="uid://c4muqnkeyqcv1" path="res://scenes/chasing_enemy.tscn" id="3_2cb7m"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_13u4s"]
+vertices = PackedVector2Array(2132, 673, 1112, 673, 1085, 605, 1085, 485, 2302, 10, 2302, 1213.93, 2132, 793, 10, 1198.06, 1112, 793, 10, 10, 65, 485, 65, 605)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 0), PackedInt32Array(6, 5, 7, 8), PackedInt32Array(9, 4, 0, 3), PackedInt32Array(9, 3, 10), PackedInt32Array(7, 9, 10, 11), PackedInt32Array(8, 7, 11, 2, 1)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(0, 0, 2312, 0, 2312, 1224, 0, 1208)])
 
 [node name="TestChasingEnemy" type="Node2D"]
 
-[node name="Platform" parent="." instance=ExtResource("1_qpj1b")]
-position = Vector2(433, 204)
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+position = Vector2(-72, -192)
+navigation_polygon = SubResource("NavigationPolygon_13u4s")
+
+[node name="Platform" parent="NavigationRegion2D" instance=ExtResource("1_qpj1b")]
+position = Vector2(505, 396)
+
+[node name="Platform2" parent="NavigationRegion2D" instance=ExtResource("1_qpj1b")]
+position = Vector2(1552, 584)
 
 [node name="Player" parent="." instance=ExtResource("2_abtoa")]
-position = Vector2(447, 248)
+position = Vector2(936, 288)
+
+[node name="ChasingEnemy" parent="." node_paths=PackedStringArray("target_to_chase") instance=ExtResource("3_2cb7m")]
+position = Vector2(48, 264)
+target_to_chase = NodePath("../Player")

@@ -1,3 +1,18 @@
-[gd_scene format=3 uid="uid://c4muqnkeyqcv1"]
+[gd_scene load_steps=4 format=3 uid="uid://c4muqnkeyqcv1"]
 
-[node name="ChasingEnemy" type="Node2D"]
+[ext_resource type="Script" path="res://scripts/chasing_enemy.gd" id="1_nurt8"]
+[ext_resource type="Texture2D" uid="uid://b05dysljhnjc6" path="res://temp art/joump.png" id="1_qg8c4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s1r6x"]
+radius = 32.0624
+
+[node name="ChasingEnemy" type="CharacterBody2D"]
+script = ExtResource("1_nurt8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_qg8c4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_s1r6x")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
