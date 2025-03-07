@@ -1,7 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://cpo5ybmirjamn"]
+[gd_scene load_steps=13 format=3 uid="uid://cpo5ybmirjamn"]
 
 [ext_resource type="PackedScene" uid="uid://cwl1myn0sim68" path="res://scenes/player.tscn" id="1_rfbke"]
 [ext_resource type="PackedScene" uid="uid://bxlxtdw5xtnku" path="res://scenes/falling_platform.tscn" id="2_0p1x0"]
+[ext_resource type="Texture2D" path="res://Aproaching Palace Background.png" id="3_4a5s8"]
+[ext_resource type="Texture2D" path="res://1x1 Block 1.png" id="4_o3qwm"]
+[ext_resource type="Texture2D" uid="uid://dhrocllkudqsc" path="res://Stage One Terrain/Base Blocks/2x2 Base Block/2x2 Base Block 3.png" id="5_63026"]
+[ext_resource type="Texture2D" uid="uid://gx1b44xv8p2t" path="res://Stage One Terrain/Base Blocks/2x2 Base Block/2x2 Base Block 2.png" id="6_gjt3p"]
+[ext_resource type="Texture2D" uid="uid://bf61vdega80fa" path="res://Stage One Terrain/Base Blocks/1x2 Base Block/1x2 Base Block 2.png" id="7_e15ij"]
+[ext_resource type="Texture2D" uid="uid://d38p1tvnwhe2x" path="res://Stage One Terrain/Base Blocks/2x1 Base Block/2x1 Base Block 1.png" id="8_rd67y"]
+[ext_resource type="Texture2D" uid="uid://bqca6ahmpr1fx" path="res://Stage One Terrain/Base Blocks/1x1 Base Block/1x1 Block 2.png" id="9_vijlb"]
+[ext_resource type="Texture2D" uid="uid://i3741wo3bg5j" path="res://Stage One Terrain/Base Blocks/1x1 Base Block/1x1 Block 3.png" id="10_x1k5j"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_1taul"]
 
@@ -36,3 +44,35 @@ shape = SubResource("RectangleShape2D_2p8eb")
 [node name="FallingPlatform" parent="." instance=ExtResource("2_0p1x0")]
 position = Vector2(187, 477)
 scale = Vector2(8.70179, 1.31365)
+
+[node name="AproachingPalaceBackground" type="Sprite2D" parent="."]
+position = Vector2(1302, 410)
+texture = ExtResource("3_4a5s8")
+
+[node name="1x1Block1" type="Sprite2D" parent="."]
+position = Vector2(1395, 449)
+texture = ExtResource("4_o3qwm")
+
+[node name="2x2BaseBlock3" type="Sprite2D" parent="."]
+position = Vector2(1300, 481)
+texture = ExtResource("5_63026")
+
+[node name="2x2BaseBlock2" type="Sprite2D" parent="."]
+position = Vector2(1491, 481)
+texture = ExtResource("6_gjt3p")
+
+[node name="1x2BaseBlock2" type="Sprite2D" parent="."]
+position = Vector2(1396, 545)
+texture = ExtResource("7_e15ij")
+
+[node name="2x1BaseBlock1" type="Sprite2D" parent="."]
+position = Vector2(1619, 449)
+texture = ExtResource("8_rd67y")
+
+[node name="1x1Block2" type="Sprite2D" parent="."]
+position = Vector2(1332, 577)
+texture = ExtResource("9_vijlb")
+
+[node name="1x1Block3" type="Sprite2D" parent="."]
+position = Vector2(1204, 451)
+texture = ExtResource("10_x1k5j")
