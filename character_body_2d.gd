@@ -7,6 +7,7 @@ extends CharacterBody2D
 @onready var floor_dash_cooldown: Timer = $FloorDashCooldown
 @onready var gravity_pause: Timer = $GravityPause
 @onready var air_jump_timer: Timer = $AirJumpTimer
+@onready var collision_shape_2d: CollisionShape2D = $Area2D/CollisionShape2D
 
 #@onready var motion_pause: Timer = $MotionPause
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
@@ -26,6 +27,8 @@ var is_air_cooldown = false
 var is_floor_cooldown = false
 var is_gravity_paused = false
 var is_motion_paused = false
+var is_on_right_wall = false
+var is_on_left_wall = false
 var is_on_air_wall = false
 var is_wall_jumping = false
 var air_wall_count = 0
@@ -40,7 +43,7 @@ func _physics_process(delta: float) -> void:
 	
 	
 	
-	
+	collision_shape_2d.disabled = true
 	
 	#starts air dash cooldown once on the floor
 	if is_on_floor() and air_dash_count > 0:
@@ -120,6 +123,59 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 		
 		
+	if is_on_wall() and not is_on_floor():
+		
+		
+		if Input.is_action_pressed("move right"):
+			is_on_right_wall = true
+			
+		if Input.is_action_pressed("move left"):
+			is_on_left_wall = true
+	
+	
+	if is_on_right_wall:
+		velocity = Vector2(0, 0)
+		
+	if is_on_left_wall:
+		velocity = Vector2(0, 0)
+		
+		
+	if Input.is_action_just_released("move right"):
+		is_on_right_wall = false
+		
+	if Input.is_action_just_released("move left"):
+		is_on_left_wall = false
+		
+		
+	if is_on_right_wall and Input.is_action_just_pressed("jump"):
+		
+		air_jump_timer.start()
+		is_wall_jumping = true
+		
+		is_on_right_wall = false
+		
+		is_facing_right = false
+		
+		velocity.x = WALL_JUMP_VELOCITY * -1
+		velocity.y = JUMP_VELOCITY
+		
+	if is_on_left_wall and Input.is_action_just_pressed("jump"):
+		
+		air_jump_timer.start()
+		is_wall_jumping = true
+		
+		is_on_left_wall = false
+		
+		is_facing_right = true
+		
+		velocity.x = WALL_JUMP_VELOCITY
+		velocity.y = JUMP_VELOCITY
+		
+		
+		
+		
+		
+		
 	#sticks the character in place in the air
 	if Input.is_action_just_pressed("spawn wall") and not is_on_floor() and not is_air_dashing and air_wall_count < 2:
 		is_on_air_wall = true
@@ -127,13 +183,13 @@ func _physics_process(delta: float) -> void:
 			is_facing_right = false
 		elif not is_facing_right:
 			is_facing_right = true
-		
+		air_wall_count += 1
 	if is_on_air_wall:
 		velocity = Vector2(0, 0)
 		
 		
-	if Input.is_action_just_released("spawn wall") and not is_air_dashing:
-		air_wall_count += 1
+	if Input.is_action_just_released("spawn wall"):
+		
 		is_on_air_wall = false
 		
 		
@@ -154,6 +210,11 @@ func _physics_process(delta: float) -> void:
 			velocity.x = WALL_JUMP_VELOCITY
 			velocity.y = JUMP_VELOCITY
 			#is_facing_right = true
+			
+		
+	if Input.is_action_just_pressed("attack"):
+		collision_shape_2d.disabled = false
+		
 
 	# Get the input direction and handle the movement/deceleration.
 	var direction := Input.get_axis("move left", "move right")
@@ -204,7 +265,7 @@ func _physics_process(delta: float) -> void:
 	
 		
 	
-		
+	
 		
 	move_and_slide()
 
