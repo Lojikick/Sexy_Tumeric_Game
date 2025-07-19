@@ -21,6 +21,7 @@ const AIR_DASH_SPEED = 1000.0
 const FLOOR_DASH_SPEED = 800.0
 var is_air_dashing = false
 var air_dash_count = 0
+var max_dash_count = 4
 var is_floor_dashing = false
 var is_air_cooldown = false
 var is_floor_cooldown = false
@@ -38,10 +39,6 @@ var is_facing_right = true
 func _physics_process(delta: float) -> void:
 	
 	
-	
-	
-	
-	
 	#starts air dash cooldown once on the floor
 	if is_on_floor() and air_dash_count > 0:
 		is_air_cooldown = true
@@ -52,7 +49,7 @@ func _physics_process(delta: float) -> void:
 			air_dash_count = 0
 			air_wall_count = 0
 	
-	if Input.is_action_just_pressed("dash") and air_dash_count < 2:
+	if Input.is_action_just_pressed("dash") and air_dash_count < max_dash_count:
 		
 		
 		#triggers an air dash
@@ -104,11 +101,6 @@ func _physics_process(delta: float) -> void:
 			elif not is_facing_right:
 				velocity.x = FLOOR_DASH_SPEED * -1
 			
-			
-			
-	
-
-
 
 	# Add the gravity.
 	if not is_on_floor() and not is_air_dashing and not is_gravity_paused:

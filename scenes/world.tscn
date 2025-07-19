@@ -31,6 +31,7 @@ scale = Vector2(1000, 100)
 mesh = SubResource("QuadMesh_1taul")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2"]
+position = Vector2(3, 1)
 shape = SubResource("RectangleShape2D_2p8eb")
 
 [node name="FallingPlatform" parent="." instance=ExtResource("2_0p1x0")]
