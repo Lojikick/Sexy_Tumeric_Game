@@ -5,28 +5,14 @@
 [ext_resource type="Texture2D" uid="uid://bbmt48w7133ky" path="res://temp art/dirt.jpg" id="3_a3jgj"]
 [ext_resource type="Texture2D" uid="uid://dkwcooyohxjnu" path="res://temp art/black_rectangle_u25AC_icon_256x256.png" id="4_8xmiq"]
 [ext_resource type="PackedScene" uid="uid://bxlxtdw5xtnku" path="res://scenes/falling_platform.tscn" id="5_8jei7"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_phqao"]
-size = Vector2(133, 257)
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_2efut"]
+[ext_resource type="PackedScene" uid="uid://c4muqnkeyqcv1" path="res://scenes/chasing_enemy.tscn" id="6_tgt63"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qb7fr"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r27yh"]
+size = Vector2(28.6734, 47.322)
+
 [node name="Level" type="Node2D"]
-
-[node name="Wall" type="StaticBody2D" parent="."]
-z_index = 1
-position = Vector2(5, 34)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
-position = Vector2(270, -131)
-shape = SubResource("RectangleShape2D_phqao")
-
-[node name="Sprite2D" type="Sprite2D" parent="Wall/CollisionShape2D"]
-position = Vector2(-1, 2)
-scale = Vector2(133, 256)
-texture = SubResource("PlaceholderTexture2D_2efut")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 z_index = 2
@@ -53,7 +39,7 @@ texture = ExtResource("3_a3jgj")
 [node name="Node" type="Node" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Node"]
-position = Vector2(663, -792)
+position = Vector2(361.25, -290.875)
 scale = Vector2(2.27182, 3.56899)
 texture = ExtResource("2_ptey2")
 
@@ -90,16 +76,16 @@ texture = ExtResource("2_ptey2")
 
 [node name="Sprite2D8" type="Sprite2D" parent="Node"]
 z_index = -1
-position = Vector2(-656, -2152)
+position = Vector2(-1104, -2040)
 scale = Vector2(56.5091, 13.5143)
 texture = ExtResource("2_ptey2")
 
 [node name="Label" type="Label" parent="."]
 z_index = 4
-offset_left = -595.0
-offset_top = -245.0
-offset_right = 9.0
-offset_bottom = -33.0
+offset_left = -145.0
+offset_top = -189.0
+offset_right = 459.0
+offset_bottom = 23.0
 text = "A and D to move
 Space to jump
 Shift to Dash in direction held
@@ -109,11 +95,25 @@ horizontal_alignment = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 2
-position = Vector2(-293, -176)
+position = Vector2(156.5, -113)
 scale = Vector2(2.30078, 3.0625)
 texture = ExtResource("4_8xmiq")
 
 [node name="FallingPlatform" parent="." instance=ExtResource("5_8jei7")]
 z_index = 250
-position = Vector2(600, -19)
+position = Vector2(-409, -167)
 scale = Vector2(23.745, 1)
+
+[node name="ChasingEnemy" parent="." node_paths=PackedStringArray("target_to_chase") instance=ExtResource("6_tgt63")]
+z_index = 95
+position = Vector2(-1179, -70)
+target_to_chase = NodePath("../CharacterBody2D")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(-41.36, -26.135)
+scale = Vector2(13.045, 13.045)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(91.6336, -15.0912)
+shape = SubResource("RectangleShape2D_r27yh")
+debug_color = Color(0.694118, 0.431373, 0.639216, 0.533333)
