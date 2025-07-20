@@ -7,7 +7,7 @@ extends CharacterBody2D
 @onready var floor_dash_cooldown: Timer = $FloorDashCooldown
 @onready var gravity_pause: Timer = $GravityPause
 @onready var air_jump_timer: Timer = $AirJumpTimer
-@onready var collision_shape_2d: CollisionShape2D = $Area2D/CollisionShape2D
+#@onready var collision_shape_2d: CollisionShape2D = $Area2D/CollisionShape2D
 
 #@onready var motion_pause: Timer = $MotionPause
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
@@ -43,7 +43,7 @@ func _physics_process(delta: float) -> void:
 	
 	
 	
-	collision_shape_2d.disabled = true
+	#collision_shape_2d.disabled = true
 	
 	#starts air dash cooldown once on the floor
 	if is_on_floor() and air_dash_count > 0:
@@ -212,8 +212,8 @@ func _physics_process(delta: float) -> void:
 			#is_facing_right = true
 			
 		
-	if Input.is_action_just_pressed("attack"):
-		collision_shape_2d.disabled = false
+	#if Input.is_action_just_pressed("attack"):
+		#collision_shape_2d.disabled = false
 		
 
 	# Get the input direction and handle the movement/deceleration.
