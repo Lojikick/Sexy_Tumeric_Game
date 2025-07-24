@@ -19,11 +19,6 @@ config/icon="res://icon.svg"
 
 Numb="*res://scenes/numb.tscn"
 
-[display]
-
-window/stretch/mode="viewport"
-window/stretch/aspect="expand"
-
 [dotnet]
 
 project/assembly_name="Sexy_Tumeric"

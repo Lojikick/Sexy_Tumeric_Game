@@ -14,6 +14,8 @@ signal playerDied
 
 
 
+#This is so that the end of level goal can detect the player
+const TYPE = "player"
 
 const SPEED = 400.0
 const JUMP_VELOCITY = -500.0

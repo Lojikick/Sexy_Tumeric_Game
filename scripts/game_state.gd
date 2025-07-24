@@ -2,7 +2,7 @@ extends Node
 
 ## GAME STATE SCRIPT ##
 # Manages the major states of the game #
-# Player States - Alive, Dead
+# Player States - Alive, Dead, Goal
 #USE:
 #Attach this object to the main level node
 #For a Player Object add the following:
@@ -11,8 +11,11 @@ extends Node
 	#	emit_signal("playerDied")
 	
 @onready var timer = $Timer
+@export var goalNode : Node2D 
 
-enum States {ALIVE, DEAD}
+enum States {ALIVE, DEAD, GOAL}
+
+
 
 #Inits player state as alive
 var state: States = States.ALIVE
@@ -22,6 +25,7 @@ func _ready() -> void:
 	#Should be just the player instance itself, will update later
 	#Calls setDeathState()
 	$CharacterBody2D.connect("playerDied", setDeathState)
+	goalNode.connect("playerGoal", setGoalState)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -36,4 +40,11 @@ func _process(_delta: float) -> void:
 #Reloads the current scene
 func setDeathState() -> void:
 	state = States.DEAD
+	get_tree().reload_current_scene()
+	
+#Inits player state as GOAL'
+#Reloads the current scene
+func setGoalState() -> void:
+	state = States.GOAL
+	print("you won")
 	get_tree().reload_current_scene()
