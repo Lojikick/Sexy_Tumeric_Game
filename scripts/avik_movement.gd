@@ -18,11 +18,11 @@ signal playerDied
 const SPEED = 400.0
 const JUMP_VELOCITY = -500.0
 const WALL_JUMP_VELOCITY = 700.0
-const AIR_DASH_SPEED = 1000.0
+const AIR_DASH_SPEED = 800.0
 const FLOOR_DASH_SPEED = 800.0
 var is_air_dashing = false
 var air_dash_count = 0
-var max_dash_count = 4
+var max_dash_count = 2
 var is_floor_dashing = false
 var is_air_cooldown = false
 var is_floor_cooldown = false
