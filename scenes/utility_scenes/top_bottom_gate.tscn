@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwml87cskpmol"]
+
+[ext_resource type="Script" path="res://scripts/level_gate.gd" id="1_my0p5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_48vo7"]
+size = Vector2(59, 61)
+
+[node name="Level_Gate" type="Node2D" groups=["level_gate"]]
+script = ExtResource("1_my0p5")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(5, 1)
+shape = SubResource("RectangleShape2D_48vo7")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

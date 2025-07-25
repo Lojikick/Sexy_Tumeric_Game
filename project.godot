@@ -31,6 +31,7 @@ project/assembly_name="Sexy_Tumeric"
 [global_group]
 
 Player=""
+level_gate=""
 
 [input]
 

@@ -1,19 +1,28 @@
 extends Camera2D
 
 @export var player: CharacterBody2D
-@onready var size: Vector2i = get_viewport_rect().size
+@onready var size: Vector2 = get_viewport_rect().size
 
 func _ready() -> void:
-	update_position()
+	pass
 	
 func _physics_process(delta: float) -> void:
-	update_position()
+	pass
 	
-func update_position() -> void:
-	var current_cell: Vector2i = Vector2i(player.global_position) / size
+func update_position(direction: String, axis: int) -> void:
+	#var current_cell: Vector2i = Vector2i(player.global_position) / size
 	#print("Finna current cell:", current_cell)
 	#print("Finna current global position:", global_position)
-	global_position = current_cell * size
+	if direction == "right":
+		global_position.x += size.x
+	if direction == "left":
+		global_position.x -= size.x
+	if direction == "up":
+		global_position.y -= size.y
+	if direction == "down":
+		global_position.y += size.y
+		
+	pass
 
 ## Called when the node enters the scene tree for the first time.
 #func _ready() -> void:

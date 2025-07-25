@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 signal playerDied
 
+const TYPE = "player"
+
 @onready var air_dash_timer: Timer = $AirDashTimer
 @onready var floor_dash_timer: Timer = $FloorDashTimer
 @onready var air_dash_cooldown: Timer = $AirDashCooldown
