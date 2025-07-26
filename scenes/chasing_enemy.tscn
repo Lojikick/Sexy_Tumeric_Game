@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c4muqnkeyqcv1"]
 
 [ext_resource type="Script" path="res://scripts/chasing_enemy.gd" id="1_nurt8"]
-[ext_resource type="Texture2D" uid="uid://b05dysljhnjc6" path="res://temp art/joump.png" id="1_qg8c4"]
+[ext_resource type="Texture2D" uid="uid://d2knlw6gkl8lg" path="res://temp art/skeleton_kobald.png" id="2_0xp3x"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s1r6x"]
 radius = 32.0624
@@ -10,7 +10,7 @@ radius = 32.0624
 script = ExtResource("1_nurt8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_qg8c4")
+texture = ExtResource("2_0xp3x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_s1r6x")
