@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+signal playerDied
+
+const TYPE = "player"
 
 @onready var air_dash_timer: Timer = $AirDashTimer
 @onready var floor_dash_timer: Timer = $FloorDashTimer
@@ -17,10 +20,11 @@ extends CharacterBody2D
 const SPEED = 400.0
 const JUMP_VELOCITY = -500.0
 const WALL_JUMP_VELOCITY = 700.0
-const AIR_DASH_SPEED = 1000.0
+const AIR_DASH_SPEED = 800.0
 const FLOOR_DASH_SPEED = 800.0
 var is_air_dashing = false
 var air_dash_count = 0
+var max_dash_count = 2
 var is_floor_dashing = false
 var is_air_cooldown = false
 var is_floor_cooldown = false
@@ -30,6 +34,7 @@ var is_on_air_wall = false
 var is_wall_jumping = false
 var air_wall_count = 0
 var is_facing_right = true
+var health = 5
 
 
 
@@ -37,11 +42,9 @@ var is_facing_right = true
 
 func _physics_process(delta: float) -> void:
 	
-	
-	
-	
-	
-	
+	if health == 0:
+		emit_signal("playerDied")
+		
 	#starts air dash cooldown once on the floor
 	if is_on_floor() and air_dash_count > 0:
 		is_air_cooldown = true
@@ -52,7 +55,7 @@ func _physics_process(delta: float) -> void:
 			air_dash_count = 0
 			air_wall_count = 0
 	
-	if Input.is_action_just_pressed("dash") and air_dash_count < 2:
+	if Input.is_action_just_pressed("dash") and air_dash_count < max_dash_count:
 		
 		
 		#triggers an air dash
@@ -104,11 +107,6 @@ func _physics_process(delta: float) -> void:
 			elif not is_facing_right:
 				velocity.x = FLOOR_DASH_SPEED * -1
 			
-			
-			
-	
-
-
 
 	# Add the gravity.
 	if not is_on_floor() and not is_air_dashing and not is_gravity_paused:
@@ -207,9 +205,16 @@ func _physics_process(delta: float) -> void:
 		
 		
 	move_and_slide()
+	
+		#print("I collided with ", collision.get_collider().group)
+		#if collision.collidder.is_in_group("Hazard"):
+			#print("Ouchies!")
 
 	#is_on_air_wall = false
-
+func reduce_health() -> void:
+	health -= 1
+	print("Ouchies! My current health is:", health)
+	
 #actions for when the air dash ends
 #pauses gravity and motion briefly
 #adds some vertical and horizontal momentum to make it feel more smooth

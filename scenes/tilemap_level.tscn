@@ -1,0 +1,194 @@
+[gd_scene load_steps=27 format=4 uid="uid://cw4stqc3r42xo"]
+
+[ext_resource type="Script" path="res://scripts/game_state.gd" id="1_gwg0u"]
+[ext_resource type="Texture2D" uid="uid://b1ydp5gax1n6i" path="res://temp art/Tileset/sprite_sheet.png" id="1_iasrp"]
+[ext_resource type="PackedScene" uid="uid://bimck05daubm6" path="res://scenes/little_guy.tscn" id="2_tcwo5"]
+[ext_resource type="Script" path="res://scenes/celeste_camera.gd" id="3_4jwvv"]
+[ext_resource type="Texture2D" uid="uid://cav60kienvo5g" path="res://temp art/Tileset/Aproaching_Palace_Background.png" id="3_n48g4"]
+[ext_resource type="Script" path="res://scripts/avik_movement.gd" id="4_jq6hq"]
+[ext_resource type="PackedScene" uid="uid://ccmhmatq5q4oq" path="res://scenes/utility_scenes/level_gate.tscn" id="8_aiag8"]
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_ne5xd"]
+tile_data = PackedInt32Array(0, 131072, 0, 65536, 131072, 1, 1, 196608, 0, 65537, 196608, 1)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_bkewf"]
+tile_data = PackedInt32Array(0, 0, 2, 65536, 0, 3, 1, 65536, 2, 65537, 65536, 3)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_wjcln"]
+tile_data = PackedInt32Array(0, 393216, 1)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_joso0"]
+tile_data = PackedInt32Array(0, 327680, 2)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_0cxpt"]
+tile_data = PackedInt32Array(0, 327680, 1, 65536, 327680, 1, 131072, 393216, 1, 196608, 196608, 2, 262144, 196608, 3, 327680, 327680, 1, 1, 0, 0, 65537, 0, 1, 131073, 393216, 1, 196609, 393216, 1, 262145, 196608, 2, 327681, 196608, 3, 2, 65536, 0, 65538, 65536, 1, 131074, 0, 0, 196610, 0, 1, 262146, 327680, 1, 327682, 327680, 0, 3, 196608, 2, 65539, 196608, 3, 131075, 65536, 0, 196611, 65536, 1, 262147, 327680, 1, 327683, 393216, 0, 4, 0, 2, 65540, 0, 3, 131076, 327680, 0, 196612, 393216, 1, 262148, 0, 0, 327684, 0, 1, 5, 65536, 2, 65541, 65536, 3, 131077, 393216, 0, 196613, 393216, 1, 262149, 65536, 0, 327685, 65536, 1)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_jktnx"]
+tile_data = PackedInt32Array(0, 0, 2, 65536, 0, 3, 131072, 196608, 2, 196608, 196608, 3, 1, 65536, 2, 65537, 65536, 3, 131073, 0, 2, 196609, 0, 3, 2, 196608, 2, 65538, 196608, 3, 131074, 65536, 2, 196610, 65536, 3, 3, 393216, 1, 65539, 393216, 1, 131075, 393216, 1, 196611, 131072, 4, 4, 327680, 0, 65540, 393216, 1, 131076, 393216, 1, 196612, 196608, 4, 5, 393216, 0, 65541, 131072, 2, 131077, 131072, 3, 196613, 393216, 1)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_jwsy2"]
+tile_data = PackedInt32Array(0, 327680, 1, 65536, 327680, 1, 131072, 262144, 0, 196608, 262144, 1, 1, 327680, 1, 65537, 327680, 1, 131073, 327680, 0, 196609, 327680, 1, 2, 393216, 1, 65538, 327680, 0, 131074, 393216, 0, 196610, 393216, 1, 3, 393216, 1, 65539, 393216, 0, 131075, 327680, 1, 196611, 393216, 1, 4, 393216, 1, 65540, 196608, 2, 131076, 196608, 3, 196612, 393216, 1, 5, 393216, 1, 65541, 393216, 1, 131077, 327680, 1, 196613, 393216, 0)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_f4fab"]
+tile_data = PackedInt32Array(0, 196608, 2, 65536, 196608, 3, 131072, 327680, 1, 196608, 327680, 1, 1, 327680, 1, 65537, 262144, 0, 131073, 262144, 1, 196609, 327680, 1, 2, 327680, 1, 65538, 327680, 1, 131074, 327680, 1, 196610, 327680, 1, 3, 327680, 1, 65539, 327680, 1, 131075, 196608, 2, 196611, 196608, 3, 4, 327680, 1, 65540, 131072, 0, 131076, 131072, 1, 196612, 393216, 1, 5, 327680, 1, 65541, 196608, 0, 131077, 196608, 1, 196613, 393216, 1)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_72gtq"]
+tile_data = PackedInt32Array(0, 0, 0, 65536, 0, 1, 1, 65536, 0, 65537, 65536, 1)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_teuqa"]
+tile_data = PackedInt32Array(0, 0, 4, 1, 65536, 4)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_5hiro"]
+tile_data = PackedInt32Array(0, 131072, 4, 1, 196608, 4)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_olyn0"]
+tile_data = PackedInt32Array(0, 327680, 0, 1, 393216, 0)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_ioknp"]
+tile_data = PackedInt32Array(0, 131072, 2, 65536, 131072, 3)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_4m6dc"]
+tile_data = PackedInt32Array(0, 262144, 0, 65536, 262144, 1)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_6e4yr"]
+tile_data = PackedInt32Array(0, 196608, 2, 65536, 196608, 3)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_3gdgm"]
+tile_data = PackedInt32Array(0, 327680, 1)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_322ys"]
+texture = ExtResource("1_iasrp")
+texture_region_size = Vector2i(64, 64)
+use_texture_padding = false
+5:1/0 = 0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+6:1/0 = 0
+6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+5:2/0 = 0
+5:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+3:2/0 = 0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+3:3/0 = 0
+3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+2:3/0 = 0
+2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+1:3/0 = 0
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+0:3/0 = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+0:4/0 = 0
+0:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+1:4/0 = 0
+1:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+2:4/0 = 0
+2:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+3:4/0 = 0
+3:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+6:0/0 = 0
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+
+[sub_resource type="TileSet" id="TileSet_6c2ir"]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 1
+physics_layer_1/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_322ys")
+pattern_0 = SubResource("TileMapPattern_ne5xd")
+pattern_1 = SubResource("TileMapPattern_bkewf")
+pattern_2 = SubResource("TileMapPattern_72gtq")
+pattern_3 = SubResource("TileMapPattern_teuqa")
+pattern_4 = SubResource("TileMapPattern_5hiro")
+pattern_5 = SubResource("TileMapPattern_olyn0")
+pattern_6 = SubResource("TileMapPattern_ioknp")
+pattern_7 = SubResource("TileMapPattern_4m6dc")
+pattern_8 = SubResource("TileMapPattern_6e4yr")
+pattern_9 = SubResource("TileMapPattern_3gdgm")
+pattern_10 = SubResource("TileMapPattern_wjcln")
+pattern_11 = SubResource("TileMapPattern_joso0")
+pattern_12 = SubResource("TileMapPattern_0cxpt")
+pattern_13 = SubResource("TileMapPattern_jktnx")
+pattern_14 = SubResource("TileMapPattern_jwsy2")
+pattern_15 = SubResource("TileMapPattern_f4fab")
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7pswo"]
+radius = 15.0
+height = 40.0
+
+[node name="Node2D" type="Node2D" node_paths=PackedStringArray("player", "camera")]
+script = ExtResource("1_gwg0u")
+player = NodePath("CharacterBody2D")
+camera = NodePath("Camera2D")
+
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
+position = Vector2(7, 635)
+anchor_mode = 0
+script = ExtResource("3_4jwvv")
+player = NodePath("../CharacterBody2D")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+z_index = 2
+texture_filter = 1
+position = Vector2(263, 900)
+scale = Vector2(1, 1.00347)
+tile_map_data = PackedByteArray("AAD8//z/AAAGAAEAAAD8//3/AAAGAAEAAAD8//7/AAAGAAEAAAD8////AAAGAAEAAAD8/wAAAAAGAAEAAAD8/wEAAAAGAAEAAAD8/wIAAAAGAAEAAAD8/wMAAAAGAAEAAAD8/wQAAAAGAAEAAAD8/wUAAAAGAAEAAAD9/wQAAAAAAAAAAAD9/wUAAAAAAAEAAAD+/wQAAAABAAAAAAD+/wUAAAABAAEAAAD//wUAAAACAAQAAAAAAAUAAAADAAQAAAD//wQAAAAFAAIAAAAAAAQAAAAFAAIAAAABAAUAAAAFAAIAAAABAAQAAAAFAAIAAAACAAQAAAAFAAIAAAACAAUAAAAFAAIAAAADAAQAAAAAAAIAAAADAAUAAAAAAAMAAAAEAAQAAAABAAIAAAAEAAUAAAABAAMAAAD9//z/AAAFAAEAAAD+//z/AAAFAAEAAAABAPz/AAAFAAEAAAACAPz/AAAFAAEAAAADAPz/AAAFAAEAAAAEAPz/AAAFAAEAAAAFAPz/AAAFAAEAAAAGAPz/AAAFAAEAAAAHAPz/AAAFAAEAAAAIAPz/AAAFAAEAAAAJAPz/AAAFAAEAAAAKAPz/AAAFAAEAAAALAPz/AAAFAAEAAAAMAPz/AAAFAAEAAAANAPz/AAAFAAEAAAANAP3/AAAFAAEAAAANAP7/AAAFAAEAAAANAP//AAAFAAEAAAANAAAAAAAFAAEAAAANAAEAAAAFAAEAAAANAAQAAAAFAAEAAAANAAUAAAAFAAEAAAAFAAUAAAAFAAEAAAAGAAUAAAAFAAEAAAAHAAUAAAAFAAEAAAAIAAUAAAAFAAEAAAAJAAUAAAAFAAEAAAAKAAUAAAAFAAEAAAALAAUAAAAFAAEAAAAMAAUAAAAFAAEAAAAFAAQAAAAFAAEAAAAGAAQAAAAFAAEAAAAHAAQAAAAFAAEAAAAIAAQAAAAFAAEAAAAJAAQAAAAFAAEAAAAKAAQAAAAFAAEAAAALAAQAAAAFAAEAAAAMAAQAAAAFAAEAAAAKAP//AAAFAAEAAAALAP//AAAFAAEAAAAMAP//AAAFAAEAAAD9//3/AAAFAAEAAAD9//7/AAAFAAEAAAD+//3/AAAFAAEAAAD+//7/AAAFAAEAAAAEAAAAAAAFAAEAAAAEAAEAAAAFAAEAAAAEAAIAAAAFAAEAAAAEAAMAAAAFAAEAAAAFAAAAAAAFAAEAAAAFAAEAAAAFAAEAAAAFAAIAAAAFAAEAAAAFAAMAAAAFAAEAAAAAAAIAAAAFAAEAAAAAAAMAAAAFAAEAAAABAAIAAAAFAAEAAAABAAMAAAAFAAEAAAAJAAIAAAAFAAEAAAAKAAIAAAAFAAEAAAAJAAMAAAAFAAEAAAAKAAMAAAAFAAEAAAD8//r/AAAAAAAAAAD8//v/AAAAAAEAAAD9//r/AAABAAAAAAD9//v/AAAFAAEAAAADAPv/AAAGAAEAAAAEAPv/AAAGAAEAAAAFAPv/AAAGAAEAAAAGAPv/AAAGAAEAAAAHAPv/AAAGAAEAAAAIAPv/AAAGAAEAAAAJAPv/AAAGAAEAAAAKAPv/AAAGAAEAAAALAPv/AAAGAAEAAAAMAPv/AAAGAAEAAAANAPv/AAAGAAEAAAANAPn/AAACAAMAAAANAPr/AAACAAMAAAANAPL/AAACAAIAAAANAPX/AAACAAMAAAANAPb/AAACAAIAAAANAPf/AAACAAMAAAANAPj/AAACAAIAAAAMAPn/AAACAAIAAAALAPn/AAAFAAIAAAAKAPn/AAAFAAIAAAAJAPn/AAAFAAIAAAAIAPn/AAAFAAIAAAAHAPr/AAAFAAIAAAAGAPr/AAAFAAIAAAAFAPr/AAAFAAIAAAAJAPr/AAAGAAAAAAAKAPr/AAAFAAIAAAALAPr/AAAFAAIAAAAMAPr/AAACAAMAAAAIAPr/AAAFAAAAAAD+//b/AAACAAQAAAD///b/AAADAAQAAAD8//j/AAAEAAAAAAD8//n/AAAEAAEAAAD8//b/AAAEAAAAAAD8//f/AAAEAAEAAAD8//T/AAAEAAAAAAD8//X/AAAEAAEAAAADAPb/AAAAAAAAAAADAPf/AAAAAAEAAAAEAPb/AAABAAAAAAAEAPf/AAABAAEAAAD9//j/AAAFAAEAAAD9//n/AAAFAAEAAAD+//r/AAAFAAEAAAD+//v/AAAFAAEAAAD8//L/AAAFAAEAAAD8//P/AAAFAAEAAAD9//L/AAAFAAEAAAD9//P/AAAFAAEAAAD+//L/AAAFAAEAAAD///L/AAAFAAEAAAAAAPL/AAAFAAEAAAABAPL/AAAFAAEAAAACAPL/AAAFAAEAAAADAPL/AAAFAAEAAAAEAPL/AAAFAAEAAAAFAPL/AAAFAAEAAAAGAPL/AAAFAAEAAAAHAPL/AAAFAAEAAAAIAPL/AAAFAAEAAAAJAPL/AAAFAAEAAAAKAPL/AAAFAAEAAAALAPL/AAAFAAEAAAAMAPL/AAAFAAEAAAAAAPb/AAAFAAEAAAAJAPX/AAAFAAEAAAAKAPX/AAAFAAEAAAALAPX/AAAFAAEAAAAMAPX/AAAFAAEAAAAOAPz/AAAFAAEAAAAPAPz/AAAFAAEAAAAQAPz/AAAFAAEAAAARAPz/AAAFAAEAAAASAPz/AAAFAAEAAAATAPz/AAAFAAEAAAAUAPz/AAAFAAEAAAAVAPz/AAAFAAEAAAAWAPz/AAAFAAEAAAAXAPz/AAAFAAEAAAAYAPz/AAAFAAEAAAAZAPz/AAAFAAEAAAAdAPz/AAAFAAEAAAAeAPz/AAAFAAEAAAAfAPz/AAAFAAEAAAAfAP3/AAAFAAEAAAAfAP7/AAAFAAEAAAAfAP//AAAFAAEAAAAfAAAAAAAFAAEAAAAfAAEAAAAFAAEAAAAfAAIAAAAFAAEAAAAfAAMAAAAFAAEAAAAfAAQAAAAFAAEAAAAfAAUAAAAFAAEAAAAOAAUAAAAFAAEAAAAPAAUAAAAFAAEAAAAQAAUAAAAFAAEAAAARAAUAAAAFAAEAAAASAAUAAAAFAAEAAAATAAUAAAAFAAEAAAAUAAUAAAAFAAEAAAAVAAUAAAAFAAEAAAAWAAUAAAAFAAEAAAAXAAUAAAAFAAEAAAAYAAUAAAAFAAEAAAAZAAUAAAAFAAEAAAAaAAUAAAAFAAEAAAAbAAUAAAAFAAEAAAAcAAUAAAAFAAEAAAAdAAUAAAAFAAEAAAAeAAUAAAAFAAEAAAAOAAQAAAAFAAEAAAAPAAQAAAAFAAEAAAAQAAQAAAAFAAEAAAARAAQAAAAFAAEAAAASAAQAAAAFAAEAAAATAAQAAAAFAAEAAAAUAAQAAAAFAAEAAAAVAAQAAAAFAAEAAAAWAAQAAAAFAAEAAAAXAAQAAAAFAAEAAAAYAAQAAAAFAAEAAAAZAAQAAAAFAAEAAAAaAAQAAAAFAAEAAAAbAAQAAAAFAAEAAAAcAAQAAAAFAAEAAAAdAAQAAAAFAAEAAAAeAAQAAAAFAAEAAAASAP//AAAFAAEAAAATAP//AAAFAAEAAAAUAP//AAAFAAEAAAAVAP//AAAFAAEAAAAWAP//AAAFAAEAAAAaAAEAAAAFAAEAAAAaAAIAAAAFAAEAAAAaAAMAAAAFAAEAAAAbAAAAAAAFAAEAAAAbAAEAAAAFAAEAAAAbAAIAAAAFAAEAAAAbAAMAAAAFAAEAAAAeAAAAAAAFAAEAAAAeAAEAAAAFAAEAAAAdAAIAAAAFAAEAAAAdAAMAAAAFAAEAAAAeAAIAAAAFAAEAAAAeAAMAAAAFAAEAAAAdAP7/AAAFAAEAAAAeAP7/AAAFAAEAAAAUAAMAAAAFAAEAAAAVAAMAAAAFAAEAAAAWAAMAAAAFAAEAAAA=")
+tile_set = SubResource("TileSet_6c2ir")
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+scale = Vector2(3, 3)
+scroll_scale = Vector2(0.2, 0.2)
+scroll_offset = Vector2(804, 500)
+
+[node name="AproachingPalaceBackground" type="Sprite2D" parent="Parallax2D"]
+position = Vector2(-9, -9.4)
+texture = ExtResource("3_n48g4")
+
+[node name="CharacterBody2D" parent="." groups=["Player"] instance=ExtResource("2_tcwo5")]
+z_index = 2
+position = Vector2(162, 1059)
+script = ExtResource("4_jq6hq")
+
+[node name="Area2D" type="Area2D" parent="CharacterBody2D" groups=["Player", "level_gate"]]
+position = Vector2(1, 7)
+scale = Vector2(0.556776, 0.44654)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D"]
+position = Vector2(3, 10)
+shape = SubResource("CapsuleShape2D_7pswo")
+
+[node name="Level_Gates" type="Node" parent="."]
+
+[node name="Level_Gate_2" parent="Level_Gates" instance=ExtResource("8_aiag8")]
+position = Vector2(1127, 1082)
+scale = Vector2(0.529438, 2.48734)
+
+[node name="Level_Gate" parent="Level_Gates" instance=ExtResource("8_aiag8")]
+position = Vector2(262, 676)
+scale = Vector2(-6.23, 0.487572)
+direction_allowed = "up"
